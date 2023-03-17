@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const CardWrapper = styled.div`
   height: 340px;
@@ -16,6 +17,10 @@ const CardWrapper = styled.div`
     cursor: pointer;
     transform: scale(1.03);
   }
+  @media screen and (max-width: 768px) {
+    height: 255px;
+    width: 100%;
+  }
 `
 
 const CardTitle = styled.h2`
@@ -25,11 +30,13 @@ const CardTitle = styled.h2`
   margin: 20px;
 `
 
-function Card({ title, cover }) {
+function Card({ id, title, cover }) {
   return (
-    <CardWrapper coverImage={cover}>
-      <CardTitle>{title}</CardTitle>
-    </CardWrapper>
+    <Link to={`/rent/${id}`}>
+      <CardWrapper coverImage={cover}>
+        <CardTitle>{title}</CardTitle>
+      </CardWrapper>
+    </Link>
   )
 }
 

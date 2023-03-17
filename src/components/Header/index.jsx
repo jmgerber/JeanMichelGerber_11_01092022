@@ -5,13 +5,16 @@ import colors from '../../utils/style/colors'
 
 const HomeLogo = styled.img`
   height: 68px;
+  @media screen and (max-width: 768px) {
+    height: 47px;
+  }
 `
 
 const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 40px 100px;
+  margin: 40px 100px 0;
   & .nav-link {
     margin-left: 60px;
     font-size: 24px;
@@ -19,6 +22,14 @@ const NavContainer = styled.nav`
     font-weight: 500;
     &:hover {
       text-decoration: underline;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    margin: 20px;
+    & .nav-link {
+      margin-left: 10px;
+      font-size: 12px;
+      text-transform: uppercase;
     }
   }
 `

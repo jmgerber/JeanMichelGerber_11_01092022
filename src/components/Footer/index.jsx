@@ -12,7 +12,11 @@ const FooterContainer = styled.footer`
     margin: 26px 0 30px;
   }
   & p {
+    font-size: 24px;
     color: #fff;
+    @media screen and (max-width: 768px) {
+      font-size: 12px;
+    }
   }
 `
 

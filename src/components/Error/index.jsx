@@ -5,21 +5,45 @@ import { Link } from 'react-router-dom'
 const ErrorContainer = styled.main`
   color: ${colors.primary};
   text-align: center;
-  margin: 150px 0;
+  flex: 1;
+  font-weight: 500;
+  margin-inline: 40px;
   & .error404 {
     font-size: 288px;
     font-weight: 700;
-    margin-bottom: 60px;
+    margin-top: 160px;
+    line-height: 288px;
   }
-  & p {
+  & .errorMessage {
     font-size: 36px;
-    font-weight: 500;
-    margin-bottom: 160px;
+    margin-top: 40px;
+    line-height: 51px;
   }
-  & a {
+  & .redirectLink {
+    display: inline-block;
     font-size: 18px;
-    font-weight: 500;
     text-decoration: underline;
+    margin-top: 168px;
+    margin-bottom: 150px;
+  }
+
+  // Responsive
+  @media screen and (max-width: 768px) {
+    margin-inline: 20px;
+    & .error404 {
+      font-size: 96px;
+      line-height: 96px;
+      margin-top: 152px;
+    }
+    & .errorMessage {
+      font-size: 18px;
+      margin-top: 12px;
+      line-height: 26px;
+    }
+    & .redirectLink {
+      font-size: 14px;
+      margin-top: 122px;
+    }
   }
 `
 
@@ -27,8 +51,12 @@ function Error() {
   return (
     <ErrorContainer>
       <h1 className="error404">404</h1>
-      <p className="">Oups! La page que vous demandez n'existe pas.</p>
-      <Link to="/">Retourner sur la page d'accueil</Link>
+      <p className="errorMessage">
+        Oups! La page que vous demandez n'existe pas.
+      </p>
+      <Link className="redirectLink" to="/">
+        Retourner sur la page d'accueil
+      </Link>
     </ErrorContainer>
   )
 }

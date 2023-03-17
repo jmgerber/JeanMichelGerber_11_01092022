@@ -4,54 +4,112 @@ import colors from '../../utils/style/colors'
 import collapseArrow from '../../assets/collapse-arrow.png'
 
 const CollapseWrapper = styled.div`
-  margin: 33px 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-block: 30px;
+  font-size: 24px;
+  @media screen and (max-width: 768px) {
+    margin-block: 20px;
+  }
 `
 
 const CollapseTitle = styled.h2`
+  font-size: inherit;
   background-color: ${colors.primary};
   color: white;
-  font-size: 24px;
   font-weight: 500;
-  border-radius: 5px;
   height: 47px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
-  padding: 0 18px;
   justify-content: space-between;
+  padding-inline: 18px;
   cursor: pointer;
+  @media screen and (max-width: 768px) {
+    font-size: 13px;
+    height: 30px;
+  }
 `
 
 const CollapseText = styled.p`
+  display: flex;
+  flex-direction: column;
   color: ${colors.primary};
-  font-size: 24px;
+  background-color: #f6f6f6;
   font-weight: 400;
   line-height: 34px;
-  margin: 32px 18px 0;
+  padding: 30px 18px 6px;
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+    line-height: 17px;
+    padding: 20px 12px 50px;
+  }
 `
 
-function Collapse({ title, text }) {
+const RentCollapseWrapper = styled(CollapseWrapper)`
+  font-size: 18px;
+`
+
+function Collapse({ title, text, rentCollapse }) {
   const [isTextOpen, setIsTextOpen] = useState(false)
 
   const handleClick = () => {
     setIsTextOpen(!isTextOpen)
   }
-  return (
-    <CollapseWrapper>
-      <CollapseTitle onClick={handleClick}>
-        {title}
-        {isTextOpen ? (
-          <img src={collapseArrow} alt="collapse-arrow" />
-        ) : (
-          <img
-            src={collapseArrow}
-            style={{ transform: `rotate(180deg)` }}
-            alt="collapse-arrow"
-          />
+  if (!rentCollapse) {
+    return (
+      <CollapseWrapper>
+        <CollapseTitle onClick={handleClick}>
+          {title}
+          {isTextOpen ? (
+            <img src={collapseArrow} alt="collapse-arrow" />
+          ) : (
+            <img
+              src={collapseArrow}
+              style={{ transform: `rotate(180deg)` }}
+              alt="collapse-arrow"
+            />
+          )}
+        </CollapseTitle>
+        {isTextOpen && (
+          <CollapseText>
+            {typeof text === 'object'
+              ? text.map((equipment, index) => (
+                  <span key={`${equipment}-${index}`}>{equipment}</span>
+                ))
+              : text}
+          </CollapseText>
         )}
-      </CollapseTitle>
-      {isTextOpen && <CollapseText>{text}</CollapseText>}
-    </CollapseWrapper>
-  )
+      </CollapseWrapper>
+    )
+  } else {
+    return (
+      <RentCollapseWrapper>
+        <CollapseTitle onClick={handleClick}>
+          {title}
+          {isTextOpen ? (
+            <img src={collapseArrow} alt="collapse-arrow" />
+          ) : (
+            <img
+              src={collapseArrow}
+              style={{ transform: `rotate(180deg)` }}
+              alt="collapse-arrow"
+            />
+          )}
+        </CollapseTitle>
+        {isTextOpen && (
+          <CollapseText>
+            {typeof text === 'object'
+              ? text.map((equipment, index) => (
+                  <span key={`${equipment}-${index}`}>{equipment}</span>
+                ))
+              : text}
+          </CollapseText>
+        )}
+      </RentCollapseWrapper>
+    )
+  }
 }
 
 export default Collapse
