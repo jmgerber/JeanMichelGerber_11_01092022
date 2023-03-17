@@ -4,11 +4,21 @@ import Banner from '../../components/Banner'
 import Collapse from '../../components/Collapse'
 
 const AboutContainer = styled.main`
-  margin: 60px 100px;
+  margin: 40px 100px;
+  flex: 1;
+  @media screen and (max-width: 768px) {
+    margin: 20px;
+  }
 `
 
 const CollapseContainer = styled.div`
-  margin: 50px;
+  margin-inline: 100px;
+  @media screen and (max-width: 768px) {
+    margin: 20px 0;
+  }
+  @media screen and (min-width: 769px) and (max-width: 1024px) {
+    margin: 30px 80px;
+  }
 `
 
 const collapsesList = [
