@@ -23,7 +23,7 @@ const CardsContainer = styled.div`
   @media screen and (max-width: 768px) {
     margin-block: 20px;
     gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(320px, max-content));
+    grid-template-columns: 1fr;
   }
 `
 

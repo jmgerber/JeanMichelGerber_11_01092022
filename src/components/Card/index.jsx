@@ -18,7 +18,7 @@ const CardWrapper = styled.div`
     transform: scale(1.03);
   }
   @media screen and (max-width: 768px) {
-    height: 255px;
+    height: clamp(255px, 34vw + 4rem, 320px);
     width: 100%;
   }
 `
