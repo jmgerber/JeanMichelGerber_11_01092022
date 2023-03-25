@@ -24,6 +24,9 @@ const NavContainer = styled.nav`
       text-decoration: underline;
     }
   }
+  @media screen and (min-width: 769px) and (max-width: 958px) {
+    margin: 40px;
+  }
   @media screen and (max-width: 768px) {
     margin: 20px;
     & .nav-link {
