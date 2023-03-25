@@ -8,6 +8,10 @@ import homeBannerImg from '../../assets/home-banner.jpg'
 const HomeContainer = styled.main`
   margin: 60px 100px;
 
+  @media screen and (min-width: 769px) and (max-width: 958px) {
+    margin: 40px;
+  }
+
   @media screen and (max-width: 768px) {
     margin: 20px;
   }
@@ -20,7 +24,7 @@ const CardsContainer = styled.div`
   gap: 50px 60px;
   justify-content: center;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 958px) {
     margin-block: 20px;
     gap: 20px;
     grid-template-columns: 1fr;
